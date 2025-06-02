@@ -1,10 +1,10 @@
 def individual_data(book):
     return {
-        "id": str(book.id),
-        "title": book.title,
-        "author": book.author,
-        "description": book.description,
-        "year": book.year,
+        "id": str(book.get("id", "")),  # ← dùng id bạn tự sinh
+        "title": book.get("title", ""),
+        "author": book.get("author", ""),
+        "description": book.get("description", ""),
+        "year": book.get("year", ""),
     }
 
 def all_data(books):

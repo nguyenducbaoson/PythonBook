@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter, HTTPException
 from configurations import collection
 from database.schemas import all_data
 from database.models import Book
+from uuid import uuid4
 
 app = FastAPI()
 router = APIRouter()
@@ -17,8 +18,11 @@ async def get_all_books():
 @router.post("/")
 async def create_book(new_book: Book):
     try:
-        resp = collection.insert_one(dict(new_book))
-        return {"status_code": 200, "id": str(resp.inserted_id)}
+        book_dict = new_book.dict()
+        book_dict["id"] = str(uuid4())
+
+        resp = collection.insert_one(book_dict)
+        return {"status_code": 200, "id": book_dict["id"]}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Some error occurred {e}")
 
