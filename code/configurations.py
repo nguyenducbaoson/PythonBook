@@ -11,9 +11,6 @@ try:
 except Exception as e:
     print("Connection error:", e)
 
-# Khai báo DB và collection để có thể import
 db = client["book_db"]
-collection = db["books"]
-
-
-# Khai báo DB và collection để có thể import
+collection = db["books"]   
+users_collection = db["users"]   

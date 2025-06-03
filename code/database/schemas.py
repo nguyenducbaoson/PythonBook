@@ -1,6 +1,6 @@
 def individual_data(book):
     return {
-        "id": str(book.get("id", "")),  # ← dùng id bạn tự sinh
+        "id": str(book.get("id", "")),
         "title": book.get("title", ""),
         "author": book.get("author", ""),
         "description": book.get("description", ""),
